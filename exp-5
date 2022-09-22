@@ -1,0 +1,225 @@
+mysql> use dataa;
+Database changed
+mysql> select * from courses;
++----------+------------+------------+-------+--------+--------+
+| courseno | CourseDesc | CourseType | SemNo | Hallno | Factno |
++----------+------------+------------+-------+--------+--------+
+| A        | Dbms       | S          | D     | AS     | DF     |
+| B        | OS         | P          | F     | PF     | ED     |
+| C        | Data       | E          | R     | RS     | SE     |
+| D        | Structure  | O          | M     | No     | ZE     |
+| E        | System     | Z          | X     | No     | WE     |
++----------+------------+------------+-------+--------+--------+
+5 rows in set (0.00 sec)
+mysql> select * from courses;
++----------+------------+------------+-------+--------+--------+
+| courseno | CourseDesc | CourseType | SemNo | Hallno | Factno |
++----------+------------+------------+-------+--------+--------+
+| A        | Dbms       | S          | D     | AS     | DF     |
+| B        | OS         | P          | F     | PF     | ED     |
+| C        | Data       | E          | R     | RS     | SE     |
+| D        | Structure  | O          | M     | No     | ZE     |
+| E        | System     | Z          | X     | No     | WE     |
++----------+------------+------------+-------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student;
++-------+--------+--------+-----+----------+---------+
+| RegNo | Name   | Gender | DOB | MobileNo | City    |
++-------+--------+--------+-----+----------+---------+
+|   123 | Sam    | M      |  10 |    45312 | Mumbai  |
+|   321 | Anu    | F      |  14 |   555211 | Chennai |
+|   543 | John   | M      |  20 |   452352 | Chennai |
+|   789 | Smitha | F      |  30 |  4245312 | Pune    |
++-------+--------+--------+-----+----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student where regno BETWEEN 123 AND 543;
++-------+------+--------+-----+----------+---------+
+| RegNo | Name | Gender | DOB | MobileNo | City    |
++-------+------+--------+-----+----------+---------+
+|   123 | Sam  | M      |  10 |    45312 | Mumbai  |
+|   321 | Anu  | F      |  14 |   555211 | Chennai |
+|   543 | John | M      |  20 |   452352 | Chennai |
++-------+------+--------+-----+----------+---------+
+3 rows in set (0.07 sec)
+
+mysql> select * from courses;
++----------+------------+------------+-------+--------+--------+
+| courseno | CourseDesc | CourseType | SemNo | Hallno | Factno |
++----------+------------+------------+-------+--------+--------+
+| A        | Dbms       | S          | D     | AS     | DF     |
+| B        | OS         | P          | F     | PF     | ED     |
+| C        | Data       | E          | R     | RS     | SE     |
+| D        | Structure  | O          | M     | No     | ZE     |
+| E        | System     | Z          | X     | No     | WE     |
++----------+------------+------------+-------+--------+--------+
+5 rows in set (0.00 sec)
+mysql> select * from courses where coursetype='Z' AND CourseNo='E';
++----------+------------+------------+-------+--------+--------+
+| courseno | CourseDesc | CourseType | SemNo | Hallno | Factno |
++----------+------------+------------+-------+--------+--------+
+| E        | System     | Z          | X     | No     | WE     |
++----------+------------+------------+-------+--------+--------+
+1 row in set (0.06 sec)
+
+mysql> create table course(courseno int, RegNo int(10) primary key, course_Sub varchar(30) not null, marks int(20) not null);
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> describe course;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| courseno   | int(11)     | YES  |     | NULL    |       |
+| RegNo      | int(10)     | NO   | PRI | NULL    |       |
+| course_Sub | varchar(30) | NO   |     | NULL    |       |
+| marks      | int(20)     | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> insert into course values(1, 192124145, "Maths", 97);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into course values(2, 192124132, "C Programming", 82);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into course values(2, 192124187, "DBMS", 67);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into course values(3, 192124193, "OS", 69);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into course values(4, 192124112, "AI", 75);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from course;
++----------+-----------+---------------+-------+
+| courseno | RegNo     | course_Sub    | marks |
++----------+-----------+---------------+-------+
+|        4 | 192124112 | AI            |    75 |
+|        2 | 192124132 | C Programming |    82 |
+|        1 | 192124145 | Maths         |    97 |
+|        2 | 192124187 | DBMS          |    67 |
+|        3 | 192124193 | OS            |    69 |
++----------+-----------+---------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select avg(marks) from course;
++------------+
+| avg(marks) |
++------------+
+|    78.0000 |
++------------+
+1 row in set (0.13 sec)
+mysql> select * from course;
++----------+-----------+---------------+-------+
+| courseno | RegNo     | course_Sub    | marks |
++----------+-----------+---------------+-------+
+|        4 | 192124112 | AI            |    75 |
+|        2 | 192124132 | C Programming |    82 |
+|        1 | 192124145 | Maths         |    97 |
+|        2 | 192124187 | DBMS          |    67 |
+|        3 | 192124193 | OS            |    69 |
++----------+-----------+---------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select max(marks) from course;
++------------+
+| max(marks) |
++------------+
+|         97 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select max(marks), min(marks) from course;
++------------+------------+
+| max(marks) | min(marks) |
++------------+------------+
+|         97 |         67 |
++------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select max(marks), min(marks) from course where courseno=1;
++------------+------------+
+| max(marks) | min(marks) |
++------------+------------+
+|         97 |         97 |
++------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select max(marks), min(marks) from course where courseno=2;
++------------+------------+
+| max(marks) | min(marks) |
++------------+------------+
+|         82 |         67 |
++------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(marks), max(marks), min(marks) from course;
++------------+------------+------------+
+| avg(marks) | max(marks) | min(marks) |
++------------+------------+------------+
+|    78.0000 |         97 |         67 |
++------------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(marks) from course where courseno=2;
++------------+
+| avg(marks) |
++------------+
+|    74.5000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from course;
++----------+-----------+---------------+-------+
+| courseno | RegNo     | course_Sub    | marks |
++----------+-----------+---------------+-------+
+|        4 | 192124112 | AI            |    75 |
+|        2 | 192124132 | C Programming |    82 |
+|        1 | 192124145 | Maths         |    97 |
+|        2 | 192124187 | DBMS          |    67 |
+|        3 | 192124193 | OS            |    69 |
++----------+-----------+---------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into course values(5, 192124166, "Maths", 88);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select avg(marks) from course where course_sub='maths';
++------------+
+| avg(marks) |
++------------+
+|    92.5000 |
++------------+
+1 row in set (0.00 sec)
+mysql> select * from course where course_sub='Maths' and marks <(select avg(marks) from course where course_sub='Maths');
++----------+-----------+------------+-------+
+| courseno | RegNo     | course_Sub | marks |
++----------+-----------+------------+-------+
+|        5 | 192124166 | Maths      |    88 |
++----------+-----------+------------+-------+
+1 row in set (0.06 sec)
+
+mysql> select sum(marks) from course;
++------------+
+| sum(marks) |
++------------+
+|        478 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select course_sub, count(courseno) from course;
++------------+-----------------+
+| course_sub | count(courseno) |
++------------+-----------------+
+| AI         |               6 |
++------------+-----------------+
+1 row in set (0.02 sec)
+mysql> select courseno,course_sub,count(regno) from course where regno like '1921241%';
++----------+------------+--------------+
+| courseno | course_sub | count(regno) |
++----------+------------+--------------+
+|        4 | AI         |            6 |
++----------+------------+--------------+
+1 row in set (0.00 sec)
