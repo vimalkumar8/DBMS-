@@ -1,0 +1,160 @@
+use student;
+Database changed
+mysql> create table student(regno int(10),name char(10),gender char(10),mobilno int(10) );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc student;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| regno   | int(10)  | YES  |     | NULL    |       |
+| name    | char(10) | YES  |     | NULL    |       |
+| gender  | char(10) | YES  |     | NULL    |       |
+| mobilno | int(10)  | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> use employee;
+Database changed
+mysql> create table employee(empno int(10),ename char(10),deptno int(10) );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc employee;
++--------+----------+------+-----+---------+-------+
+| Field  | Type     | Null | Key | Default | Extra |
++--------+----------+------+-----+---------+-------+
+| empno  | int(10)  | YES  |     | NULL    |       |
+| ename  | char(10) | YES  |     | NULL    |       |
+| deptno | int(10)  | YES  |     | NULL    |       |
++--------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create database faculty;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| employee           |
+| faculty            |
+| mysql              |
+| performance_schema |
+| student            |
+| test               |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use faculty;
+Database changed
+mysql> create table faculty(facno int(10),facname char(20),gender char(10),
+    -> DOB int(10),DOJ int(10),mobileno int(10) );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc faculty;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| facno    | int(10)  | YES  |     | NULL    |       |
+| facname  | char(20) | YES  |     | NULL    |       |
+| gender   | char(10) | YES  |     | NULL    |       |
+| DOB      | int(10)  | YES  |     | NULL    |       |
+| DOJ      | int(10)  | YES  |     | NULL    |       |
+| mobileno | int(10)  | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+6 rows in set (0.03 sec)
+
+mysql> create database department;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| department         |
+| employee           |
+| faculty            |
+| mysql              |
+| performance_schema |
+| student            |
+| test               |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use department;
+Database changed
+mysql> create table department(deptno int(10),deptname char(10),depthead char(10) );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc department;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| deptno   | int(10)  | YES  |     | NULL    |       |
+| deptname | char(10) | YES  |     | NULL    |       |
+| depthead | char(10) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> create database course;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| course             |
+| department         |
+| employee           |
+| faculty            |
+| mysql              |
+| performance_schema |
+| student            |
+| test               |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> use course;
+Database changed
+mysql> create table course(courseno int(10),coursedesc char(10),coursetype char(10),semno int(10),hallno int(10),facno int(10) );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc course;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| courseno   | int(10)  | YES  |     | NULL    |       |
+| coursedesc | char(10) | YES  |     | NULL    |       |
+| coursetype | char(10) | YES  |     | NULL    |       |
+| semno      | int(10)  | YES  |     | NULL    |       |
+| hallno     | int(10)  | YES  |     | NULL    |       |
+| facno      | int(10)  | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+mysql> use faculty;
+Database changed
+mysql> create table faculty(facno varchar(4),facname varchar(15),gender char(1),dob date, doj date,mobilno int(10) );
+ERROR 1050 (42S01): Table 'faculty' already exists
+mysql> alter table faculty add deptno varchar(4);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++----------+------------+------+-----+---------+-------+
+| Field    | Type       | Null | Key | Default | Extra |
++----------+------------+------+-----+---------+-------+
+| facno    | int(10)    | YES  |     | NULL    |       |
+| facname  | char(20)   | YES  |     | NULL    |       |
+| gender   | char(10)   | YES  |     | NULL    |       |
+| DOB      | int(10)    | YES  |     | NULL    |       |
+| DOJ      | int(10)    | YES  |     | NULL    |       |
+| mobileno | int(10)    | YES  |     | NULL    |       |
+| deptno   | varchar(4) | YES  |     | NULL    |       |
++----------+------------+------+-----+---------+-------+
+7 rows in set (0.03 sec)
+
+mysql>
