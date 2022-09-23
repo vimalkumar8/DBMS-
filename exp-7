@@ -1,0 +1,31 @@
+mysql> select * from student where score>(select  avg(score) from student);
++-------+---------+--------+------------+------------+---------+----------+-------+
+| regno | name    | gender | dob        | mobileno   | city    | courseno | score |
++-------+---------+--------+------------+------------+---------+----------+-------+
+|   123 | magesh  | m      | 2022-09-08 | 1234567891 | chennai | c1       |    95 |
+|   191 | sathish | f      | 2002-02-22 | 1423123423 | salem   | c2       |    79 |
++-------+---------+--------+------------+------------+---------+----------+-------+
+2 rows in set (0.00 sec)
+mysql> select coursedesc from course where courseno in(select courseno from student group by courseno having count(*)>2);
++------------+
+| coursedesc |
++------------+
+dbms       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select facno from faculty where doj=(select max(doj) from faculty);
++-------+
+| facno |
++-------+
+| f1    |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select courseno from student where score>(select avg(score) from student);
++----------+
+| courseno |
++----------+
+| c1       |
+| c2       |
++----------+
