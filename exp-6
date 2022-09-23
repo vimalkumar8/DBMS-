@@ -1,0 +1,50 @@
+Display the courseno and the number of students registered in each course if no of students registered is >1.
+mysql> select courseno,count(*) from student group by courseno having count(*)>1;
++----------+----------+
+| courseno | count(*) |
++----------+----------+
+| c1       |        3 |
+| c2       |        2 |
++----------+----------+
+2 rows in set (0.00 sec)
+
+
+Display the facno whose department is getting average salary greater than 25000
+
+mysql> select facno from faculty group by deptno having avg(salary)>25000;
++-------+
+| facno |
++-------+
+| f2    |
++-------+
+1 row in set (0.00 sec)
+
+ORDER BY
+
+Retrieve Name, Gender, MobileNo of all the students in ascending order of RegNo.
+mysql> select name,gender,mobileno from student order by regno;
++---------+--------+------------+
+| name    | gender | mobileno   |
++---------+--------+------------+
+| magesh  | m      | 1234567891 |
+| reshma  | m      | 1231231231 |
+| nisha   | f      | 1131231231 |
+| sathish | f      | 1423123423 |
+| gans    | m      | 1233456644 |
++---------+--------+------------+
+5 rows in set (0.00 sec)
+
+
+List the faculty members in the order of older faculty first.
+mysql> select facno from faculty order by dob desc;
+
++-------+
+| facno |
++-------+
+| f1    |
+| f4    |
+| f3    |
+| f2    |
++-------+
+4 rows in set (0.00 sec)
+
