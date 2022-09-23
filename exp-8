@@ -1,0 +1,13 @@
+mysql> select * from course left join student on course.courseno=student.courseno;
++----------+---------------+------------+-------+--------+-------+-------+---------+--------+------------+------------+-----------+----------+-------+
+| courseno | coursedesc    | coursetype | semno | hallno | facno | regno | name    | gender | dob        | mobileno   | city      | courseno | score |
++----------+---------------+------------+-------+--------+-------+-------+---------+--------+------------+------------+-----------+----------+-------+
+| c1       | dbms          | c          | 2     | 3      | f1    |   123 | magesh  | m      | 2022-09-08 | 1234567891 | chennai   | c1       |    95 |
+| c1       | dbms          | c          | 2     | 3      | f1    |   124 | reshma  | m      | 2004-09-08 | 1231231231 | bangalore | c1       |    45 |
+| c1       | dbms          | c          | 2     | 3      | f1    |   200 | gans    | m      | 1997-08-09 | 1233456644 | chennai   | c1       |    67 |
+| c2       | ds            | c          | 1     | 4      | f2    |   125 | nisha   | f      | 2008-09-18 | 1131231231 | hyderabad | c2       |    65 |
+| c2       | ds            | c          | 1     | 4      | f2    |   191 | sathish | f      | 2002-02-22 | 1423123423 | salem     | c2       |    79 |
+| c3       | networks      | c          | 3     | 5      | f3    |  NULL | NULL    | NULL   | NULL       |       NULL | NULL      | NULL     |  NULL |
+| c4       | r programming | c          | 1     | NULL   | f2    |  NULL | NULL    | NULL   | NULL       |       NULL | NULL      | NULL     |  NULL |
++----------+---------------+------------+-------+--------+-------+-------+---------+--------+------------+------------+-----------+----------+-------+
+ 
