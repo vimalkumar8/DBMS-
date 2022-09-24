@@ -1,0 +1,44 @@
+mysql> create index ind1 on student(courseno);
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from student where courseno='c1';
++-------+--------+--------+------------+------------+-----------+----------+-------+
+| regno | name   | gender | dob        | mobileno   | city      | courseno | score |
++-------+--------+--------+------------+------------+-----------+----------+-------+
+|   123 | magesh | m      | 2022-09-08 | 1234567891 | chennai   | c1       |    95 |
+|   124 | reshma | m      | 2004-09-08 | 1231231231 | bangalore | c1       |    45 |
+|   200 | gans   | m      | 1997-08-09 | 1233456644 | chennai   | c1       |    67 |
++-------+--------+--------+------------+------------+-----------+----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> EXPLAIN select * from student where courseno='c1';
++----+-------------+---------+------+---------------+------+---------+------+------+-------------+
+| id | select_type | table   | type | possible_keys | key  | key_len | ref  | rows | Extra       |
++----+-------------+---------+------+---------------+------+---------+------+------+-------------+
+|  1 | SIMPLE      | student | ALL  | ind1          | NULL | NULL    | NULL |    5 | Using where |
++----+-------------+---------+------+---------------+------+---------+------+------+-------------+
+1 row in set (0.04 sec)
+
+3.Create a example sequence 
+mysql> create table empl(eno integer(3) auto_increment primary key, ename varchar(20));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> insert into empl(ename) values('kiruthik');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into empl(ename) values('shwethaa');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into empl(ename) values('balaji');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from empl;
++-----+----------+
+| eno | ename    |
++-----+----------+
+|   1 | kiruthik |
+|   2 | shwethaa |
+|   3 | balaji   |
++-----+----------+
+3 rows in set (0.00 sec)
